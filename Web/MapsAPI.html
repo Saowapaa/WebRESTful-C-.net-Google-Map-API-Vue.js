@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Google Maps API by Vue.js</title>
+    <style>
+        #map {
+            height: 600px; 
+            width:100%;
+        }
+        html, body {
+            height:100%;
+            margin:0;
+            padding:0;
+        }
+       
+    </style>
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+</head>
+<body>
+
+    <div class="content" id="app">
+
+        <div class="box box-solid bg-teal-gradient">
+            <div class="box-header">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <input type="text" v-model="txt_search" v-on:keyup.13="onSearch" class="form-control">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-info"><i class="fa fa-search"></i></button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="box-body">
+                <div id="map"></div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Data Restaurant [API Resful].</h3>
+            </div>
+            <div>
+                <div class="box-body table-responsive no-padding">
+                    <!--<template></template>-->
+                    <table class="table table-hover">
+                        <tr>
+                            <th style="width: 20px">#</th>
+                            <th>ชื่อ</th>
+                            <th>ที่อยู่</th>
+                            <th style="width: 40px"></th>
+                        </tr>
+                        <tr v-for="Restaurant, i in Restaurants">
+                            <td>{{Restaurant.Id}}.</td>
+                            <td>{{Restaurant.Name}}</td>
+                            <td>{{Restaurant.Description}}</td>
+                            <td>
+                                <button type="button" class="btn btn-block btn-info btn-xs" v-on:click="onClickRestaurant(Restaurant)">Click</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="scripts/main.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgdV8mWpYkESsFNWOAvp6vt1ju_9mYL9o&callback=initMap" type="text/javascript"></script>
+    <link href="components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="components/font-awesome/css/font-awesome.css" rel="stylesheet" />
+</body>
+
+</html>
